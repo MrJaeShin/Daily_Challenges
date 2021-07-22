@@ -406,7 +406,19 @@ mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
 
-
+function mumble(string){
+  result = [];
+  for (let i=0;i<string.length;i++){
+    let index = 0;
+    temp = '';
+    while (index <= i){
+      temp += string[i];
+      index++;
+    }
+    result.push(temp);
+  }
+  return result.join('-');
+}
 
 
 
@@ -431,8 +443,6 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 
 
 
-
-
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
 
@@ -452,8 +462,6 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4});  //=> {a: 1, b: 2, c: 3, d: 4}
 mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c: 3, d: 44}
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
-
-
 
 
 
@@ -493,8 +501,6 @@ findHighestPriced([
 
 
 
-
-
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
 
@@ -525,7 +531,6 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 
 
 
-
 /*-----------------------------------------------------------------
 Challenge: 18-reduceArray
 
@@ -535,10 +540,14 @@ Prompt:
 
 The goal is of this challenge is to write a function that performs the functionality of JavaScript's Array.prototype.reduce method.
 
-- Write a function named reduceArray that accepts three arguments: (1) an array; (2) a callback function; and (3) a value used as the initial value of the "accumulator".
+- Write a function named reduceArray that accepts three arguments: (1) an array; (2) a callback function; and 
+(3) a value used as the initial value of the "accumulator".
 - The reduceArray function should return whatever is returned by the callback function on the last iteration.
-- The reduceArray function should iterate over each element in the array (first arg).  For each iteration, invoke the callback function (2nd arg), passing to it three arguments: (1) the "accumulator", which is the value returned by the callback during the previous iteration; (2) the  current element; and (3) the index of the current iteration.
-- On the first iteration, provide the third argument provided to reduceArray as the first argument when invoking the callback, then for subsequent iterations, provide the value returned by the callback during the previous iteration.
+- The reduceArray function should iterate over each element in the array (first arg).  For each iteration, invoke the callback function (2nd arg), 
+passing to it three arguments: (1) the "accumulator", which is the value returned by the callback during the previous iteration; 
+(2) the  current element; and (3) the index of the current iteration.
+- On the first iteration, provide the third argument provided to reduceArray as the first argument when invoking the callback, 
+then for subsequent iterations, provide the value returned by the callback during the previous iteration.
 
 Examples:
 
