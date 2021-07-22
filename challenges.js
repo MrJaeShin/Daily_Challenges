@@ -179,14 +179,14 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 
-function range(int1,int2){
-  if (int1 > int2){
+function range(num1, num2){
+  if (num1 > num2){
     return "First argument must be less than second";
   }
   let range =[];
-  let num = int1
-  while(num < int2){
-    range.push(int);
+  let num = num1
+  while(num < num2){
+    range.push(num);
     counter ++;
   }
   return range;
@@ -267,7 +267,7 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 
 function charCount(string){
   let count = {};
-  for (let i=0; i< string.length;i++){
+  for (let i=0; i< string.length; i++){
     if (string[i] in count){
       count[string[i]] ++;
     } else {
@@ -304,8 +304,13 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
-
-
+function formatWithPadding(int, character, length) {
+  let result = '' + int
+  while (result.length < length) {
+    result = character + result;
+  }
+  return result;
+}
 
 
 /*-----------------------------------------------------------------
@@ -330,8 +335,15 @@ isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
 
-
-
+function isPalindrome(string) {
+  string = string.toLowerCase();
+  while (string.includes(" ")) string = string.replace(" ", "");
+  for (let i = 0; i < Math.floor(string.length/2); i++) {
+    if (string.charAt(i) !== string.charAt(string.length - i - 1)) 
+    return false;
+  }
+  return true;
+}
 
 
 /*-----------------------------------------------------------------
@@ -358,7 +370,18 @@ hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
-
+function hammingDistance(string1,string2){
+  if (string1.length!=string2.length){
+    return NaN;
+  }
+  let result= 0;
+  for (let i= 0; i < string1.length; i ++){
+    if (string1[i] != string2[i]){
+      result ++;
+    }
+  }
+  return result;
+}
 
 
 
@@ -701,7 +724,11 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
 
-
+function isWinningTicket(ticket){
+  return ticket.every(function(arr) {
+    return arr[0].includes(String.fromCharCode(arr[1]));
+  });
+}
 
 
 
