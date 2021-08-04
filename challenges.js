@@ -515,11 +515,11 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 
-funtion findHighestPriced(arr) {
-  let highesPrice = 0;
+function findHighestPriced(arr){
+  let highestPrice = 0;
   let result;
-  arr.forEach(function (item) {
-    if (item.price > highestPrice) {
+  arr.forEach(function (item){
+    if (item.price > highestPrice){
       highestPrice = item.price;
       result;
     }
@@ -603,7 +603,7 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 
 function reduceArray(arr, cb, init) {
   let acc = init;
-  arr.forEach(funtion(element, idx){
+  arr.forEach(function(element, idx){
     acc = cb(acc, element, idx);
   });
   return acc;
