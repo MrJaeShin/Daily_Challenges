@@ -14,7 +14,7 @@ sayHello() //=> Hello!
 // Your solution for 00-sayHello (example) here:
 
 function sayHello() {
-  return 'Hello!'
+  return 'Hello!';
 }
 
 
@@ -91,7 +91,7 @@ sumNumbers([]) //=> 0
 
 function sumNumbers(nums) {
   let sum = 0;
-  nums.forEach(function(num) {
+  nums.forEach(function (num) {
     sum += num;
   });
   return sum;
@@ -121,7 +121,7 @@ add(7,-12) //=> -5
 function addList() {
   let nums = Array.from(arguments);
   let sum = 0;
-  nums.forEach(function(num) {
+  nums.forEach(function (num) {
     sum += num;
   });
   return sum;
@@ -150,11 +150,11 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 
-function computeRemainder(dividend,divisor){
-  if (divisor ===0){
+function computeRemainder(dividend, divisor) {
+  if (divisor === 0) {
     return Infinity;
   }
-  return dividend%divisor;
+  return dividend % divisor;
 }
 
 
@@ -179,15 +179,15 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 
-function range(num1, num2){
-  if (num1 > num2){
+function range(num1, num2) {
+  if (num1 > num2) {
     return "First argument must be less than second";
   }
-  let range =[];
-  let num = num1
-  while(num < num2){
+  let range = [];
+  let num = num1;
+  while (num < num2) {
     range.push(num);
-    counter ++;
+    counter++;
   }
   return range;
 }
@@ -210,7 +210,7 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 // Your solution for 07-reverseUpcaseString here:
 
 function reverseUpcaseString(string) {
-  return string.split("").reverse().map(function(characters) {
+  return string.split("").reverse().map(function (characters) {
     return characters.toUpperCase();
   }).join("");
 }
@@ -235,8 +235,8 @@ removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 
-function removeEnds(string){
-  if (string.length < 3){
+function removeEnds(string) {
+  if (string.length < 3) {
     return "";
   }
   return string.slice(1, string.length - 1);
@@ -265,13 +265,13 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
-function charCount(string){
+function charCount(string) {
   let count = {};
-  for (let i=0; i< string.length; i++){
-    if (string[i] in count){
-      count[string[i]] ++;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] in count) {
+      count[string[i]]++;
     } else {
-      count[string[i]] =1;
+      count[string[i]] = 1;
     }
   }
   return count;
@@ -305,7 +305,7 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 // Your solution for 10-formatWithPadding here:
 
 function formatWithPadding(int, character, length) {
-  let result = '' + int
+  let result = '' + int;
   while (result.length < length) {
     result = character + result;
   }
@@ -338,9 +338,9 @@ isPalindrome(''); //=> true
 function isPalindrome(string) {
   string = string.toLowerCase();
   while (string.includes(" ")) string = string.replace(" ", "");
-  for (let i = 0; i < Math.floor(string.length/2); i++) {
-    if (string.charAt(i) !== string.charAt(string.length - i - 1)) 
-    return false;
+  for (let i = 0; i < Math.floor(string.length / 2); i++) {
+    if (string.charAt(i) !== string.charAt(string.length - i - 1))
+      return false;
   }
   return true;
 }
@@ -370,14 +370,14 @@ hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
-function hammingDistance(string1,string2){
-  if (string1.length!=string2.length){
+function hammingDistance(string1, string2) {
+  if (string1.length != string2.length) {
     return NaN;
   }
-  let result= 0;
-  for (let i= 0; i < string1.length; i ++){
-    if (string1[i] != string2[i]){
-      result ++;
+  let result = 0;
+  for (let i = 0; i < string1.length; i++) {
+    if (string1[i] != string2[i]) {
+      result++;
     }
   }
   return result;
@@ -406,12 +406,12 @@ mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
 
-function mumble(string){
+function mumble(string) {
   result = [];
-  for (let i=0;i<string.length;i++){
+  for (let i = 0; i < string.length; i++) {
     let index = 0;
     temp = '';
-    while (index <= i){
+    while (index <= i) {
       temp += string[i];
       index++;
     }
@@ -441,7 +441,15 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 
-
+function fromPairs(arr) {
+  let object = {};
+  for (let i = 0; i < arr.length; i++) {
+    let key = arr[i][0];
+    let value = arr[i][1];
+    object[key] = value;
+  }
+  return object;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 15-mergeObjects
@@ -463,7 +471,15 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
 
-
+function mergeObjects(target, ...objects) {
+  objects.forEach(function (obj) {
+    // using ES2015's 'for in' loop
+    for (var key in obj) {
+      target[key] = obj[key];
+    }
+  });
+  return target;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 16-findHighestPriced
@@ -499,7 +515,17 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 
-
+funtion findHighestPriced(arr) {
+  let highesPrice = 0;
+  let result;
+  arr.forEach(function (item) {
+    if (item.price > highestPrice) {
+      highestPrice = item.price;
+      result;
+    }
+  });
+  return result;
+}
 
 /*-----------------------------------------------------------------
 Challenge: 17-mapArray
@@ -528,7 +554,13 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
 
-
+function mapArray(arr, cb) {
+  let result = [];
+  arr.forEach(function (element, idx) {
+    result.push(cb(element, idx));
+  });
+  return result;
+}
 
 
 /*-----------------------------------------------------------------
@@ -569,7 +601,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
 
-
+function reduceArray(arr, cb, init) {
+  let acc = init;
+  arr.forEach(funtion(element, idx){
+    acc = cb(acc, element, idx);
+  });
+  return acc;
+}
 
 
 
@@ -600,7 +638,17 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
 
-
+function flatten(arr) {
+  let newArr = [];
+  arr.forEach(function (element) {
+    if (Array.isArray(element)) {
+      newArr = newArr.concat(flatten(element));
+    } else {
+      flatArr.push(element);
+    }
+  });
+  return newArr;
+}
 
 
 
@@ -624,7 +672,15 @@ isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
 
-
+function isPrime(num) {
+  if (num === 2)
+    return true;
+  for (i = 2; i < Math.sqrt(num); i++) {
+    if (num % i === 0)
+      return false;
+  }
+  return true;
+}
 
 
 
@@ -733,8 +789,8 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
 
-function isWinningTicket(ticket){
-  return ticket.every(function(arr) {
+function isWinningTicket(ticket) {
+  return ticket.every(function (arr) {
     return arr[0].includes(String.fromCharCode(arr[1]));
   });
 }
