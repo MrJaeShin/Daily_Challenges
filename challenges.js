@@ -515,11 +515,11 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 
-function findHighestPriced(arr){
+function findHighestPriced(arr) {
   let highestPrice = 0;
   let result;
-  arr.forEach(function (item){
-    if (item.price > highestPrice){
+  arr.forEach(function (item) {
+    if (item.price > highestPrice) {
       highestPrice = item.price;
       result;
     }
@@ -603,7 +603,7 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 
 function reduceArray(arr, cb, init) {
   let acc = init;
-  arr.forEach(function(element, idx){
+  arr.forEach(function (element, idx) {
     acc = cb(acc, element, idx);
   });
   return acc;
@@ -711,89 +711,104 @@ primeFactors(200) //=> [2, 2, 2, 5, 5]
 
 
 
+  /*-----------------------------------------------------------------
+  Challenge: 22-intersection
+  
+  Difficulty: Intermediate
+  
+  Prompt:
+  
+  - Write a function named intersection that accepts two arguments which are both arrays.  The array arguments may contain any mixture of strings, numbers and/or booleans - but no reference types, i.e., objects.
+  - The function should return a new array containing all elements in common, including repeating element values.
+  - The ordering of the elements in the returned is not important.
+  - If there are no elements in the arrays in common,  the intersection function should return an empty array.
+  - The function should not mutate (change) either argument.
+  
+  Examples:
+  
+  intersection(['a', 1], []) //=> []
+  intersection(['a', 1], [true, 'a', 15]) //=> ['a']
+  intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
+  -----------------------------------------------------------------*/
+  // Your solution for 22-intersection here:
 
-/*-----------------------------------------------------------------
-Challenge: 22-intersection
-
-Difficulty: Intermediate
-
-Prompt:
-
-- Write a function named intersection that accepts two arguments which are both arrays.  The array arguments may contain any mixture of strings, numbers and/or booleans - but no reference types, i.e., objects.
-- The function should return a new array containing all elements in common, including repeating element values.
-- The ordering of the elements in the returned is not important.
-- If there are no elements in the arrays in common,  the intersection function should return an empty array.
-- The function should not mutate (change) either argument.
-
-Examples:
-
-intersection(['a', 1], []) //=> []
-intersection(['a', 1], [true, 'a', 15]) //=> ['a']
-intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
------------------------------------------------------------------*/
-// Your solution for 22-intersection here:
-
-
-
-
-
-/*-----------------------------------------------------------------
-Challenge: 23-balancedBrackets
-
-Difficulty:  Intermediate
-
-Prompt:
-
-- Write a function called balancedBrackets that accepts a single string as argument.
-- The input string is composed entirely of parentheses, brackets and/or curly braces, i.e.,  (), [] and/or {}. Referred to as "braces" from this point forward...
-- The balancedBraces function should return true if the string's braces are "balanced" and false if they are not.
-- The brackets are considered unbalanced if any closing bracket does not close the same type of opening bracket, ignoring already matched brackets between them.  Examples explain it best...
-
-Examples:
-
-balancedBrackets( '()' ) // => true
-balancedBrackets( '(]' ) // => false
-balancedBrackets( '[{}]' ) // => true
-balancedBrackets( '[(])' ) // => false
-balancedBrackets( '[({}[])]' ) // => true
------------------------------------------------------------------*/
-// Your solution for 23-balancedBrackets here:
+  function intersection(arr1, arr2) {
+    let result = [];
+    let arr2_2 = [...arr2];
+    arr1.forEach(val => {
+      var i = arr2_2.indexOf(value);
+      if (i > -1) result.push(arr2_2.splice(i, 1)[0]);
+    });
+    return result;
+  }
 
 
 
+  /*-----------------------------------------------------------------
+  Challenge: 23-balancedBrackets
+  
+  Difficulty:  Intermediate
+  
+  Prompt:
+  
+  - Write a function called balancedBrackets that accepts a single string as argument.
+  - The input string is composed entirely of parentheses, brackets and/or curly braces, i.e.,  (), [] and/or {}. Referred to as "braces" from this point forward...
+  - The balancedBraces function should return true if the string's braces are "balanced" and false if they are not.
+  - The brackets are considered unbalanced if any closing bracket does not close the same type of opening bracket, ignoring already matched brackets between them.  Examples explain it best...
+  
+  Examples:
+  
+  balancedBrackets( '()' ) // => true
+  balancedBrackets( '(]' ) // => false
+  balancedBrackets( '[{}]' ) // => true
+  balancedBrackets( '[(])' ) // => false
+  balancedBrackets( '[({}[])]' ) // => true
+  -----------------------------------------------------------------*/
+  // Your solution for 23-balancedBrackets here:
+
+  function balancedBrackets(str) {
+    let braces = [];
+    return str.split('').every(i => {
+      if ('([{'.includes(i)) {
+        return braces.push(i);
+      } else {
+        return '() {} []'.includes(stack.pop() + i)
+      }
+    });
+  }
 
 
-/*-----------------------------------------------------------------
-Challenge: 24-isWinningTicket
+  /*-----------------------------------------------------------------
+  Challenge: 24-isWinningTicket
+  
+  Difficulty:  Intermediate
+  
+  Prompt:
+  
+  - Write a function called isWinningTicket that accepts a single array an as argument.
+  - The input array represents a 'lottery ticket' consisting of one or more nested 2-value arrays.  The first value of a nested array will be a string, the second an integer.
+  - The isWinningTicket function should return true if all of the nested arrays have a character in the string whose numeric character code equals the integer (2nd value).
+  - If any of the nested arrays have a string where all of the character's character code does not match the integer, then return false.
+  
+  Hints:
+  
+  - A character/string can be created from a character code using the String.fromCharCode() class method.
+  - A character within a string's character code can be obtained using the charCodeAt() string method.
+  
+  Examples:
+  
+  isWinningTicket( [ ['ABC', 65] ] ) // => true
+  isWinningTicket( [ ['ABC', 999], ['XY', 89] ] ) // => false
+  isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
+  isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
+  -----------------------------------------------------------------*/
+  // Your solution for 24-isWinningTicket here:
 
-Difficulty:  Intermediate
-
-Prompt:
-
-- Write a function called isWinningTicket that accepts a single array an as argument.
-- The input array represents a 'lottery ticket' consisting of one or more nested 2-value arrays.  The first value of a nested array will be a string, the second an integer.
-- The isWinningTicket function should return true if all of the nested arrays have a character in the string whose numeric character code equals the integer (2nd value).
-- If any of the nested arrays have a string where all of the character's character code does not match the integer, then return false.
-
-Hints:
-
-- A character/string can be created from a character code using the String.fromCharCode() class method.
-- A character within a string's character code can be obtained using the charCodeAt() string method.
-
-Examples:
-
-isWinningTicket( [ ['ABC', 65] ] ) // => true
-isWinningTicket( [ ['ABC', 999], ['XY', 89] ] ) // => false
-isWinningTicket( [ ['ABC', 66], ['dddd', 100], ['Hello', 108] ] ) // => true
-isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
------------------------------------------------------------------*/
-// Your solution for 24-isWinningTicket here:
-
-function isWinningTicket(ticket) {
-  return ticket.every(function (arr) {
-    return arr[0].includes(String.fromCharCode(arr[1]));
-  });
-}
+  function isWinningTicket(ticket) {
+    return ticket.every(function (arr) {
+      return arr[0].includes(String.fromCharCode(arr[1]));
+    });
+  }
 
 
 
@@ -823,7 +838,14 @@ getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
 
-
+function getNumForIP(ip) {
+  let chunks = ip.split('.').reverse();
+  let sum = 0;
+  chunks.forEach(function(chunk, idx) {
+    sum += parseInt(chunk) * 256**idx;
+  });
+  return sum;
+}
 
 
 
@@ -852,7 +874,17 @@ toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
 
-
+function toCamelCase(str){
+  let splitStr= str.split("")
+  for (i=0; i<splitStr.length; i++){
+    if (splitStr[i] === "-" || splitStr[i] === "_"){
+      let val = splitStr[i + 1].toUpperCase()
+      splitStr.splice(i,2,val)
+    }
+  }
+  output = splitStr.join("")
+  return output
+}
 
 
 
@@ -882,7 +914,12 @@ countTheBits( 65535 )  //=> 16
 -----------------------------------------------------------------*/
 // Your solution for 27-countTheBits here:
 
-
+function countTheBits(n) {
+  let base = (n).toString(2).split('');
+  let result = base.reduce((sum, num) => sum + Number(num), 0);
+  
+  return result;
+};
 
 
 
