@@ -736,7 +736,7 @@ primeFactors(200) //=> [2, 2, 2, 5, 5]
     let result = [];
     let arr2_2 = [...arr2];
     arr1.forEach(val => {
-      var i = arr2_2.indexOf(value);
+      let i = arr2_2.indexOf(value);
       if (i > -1) result.push(arr2_2.splice(i, 1)[0]);
     });
     return result;
